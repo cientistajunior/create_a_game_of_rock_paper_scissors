@@ -1,3 +1,19 @@
-h1 {
-    border: 1px solid red;
+/* Reset padrão para limpar margens do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* O corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9; /* Um fundo cinza claro confortável */
+    color: #333;               /* Texto grafite escuro */
+    
+    /* Ativando o Flexbox para centralizar tudo na tela */
+    display: flex;
+    flex-direction: column;    /* Elementos empilhados verticalmente (nav, main, footer) */
+    align-items: center;       /* Centraliza horizontalmente */
+    min-height: 100vh;         /* Ocupa 100% da altura da tela */
 }
