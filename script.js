@@ -6,6 +6,7 @@ const roundExplanation = document.querySelector('.round-explanation');
 const scoreBoard = document.querySelector('.score-board');
 const finalMessage = document.querySelector('.final-message');
 const btnReset = document.querySelector('.btn-reset');
+const gameSubtitle = document.querySelector('.game-subtitle');
 
 // 2. VARIÁVEIS DE ESTADO GLOBAL
 const hand = ['rock', 'paper', 'scissors'];
@@ -40,18 +41,28 @@ function jogarRodada(escolhaDoHumano){
     return; 
   }
 
+  gameSubtitle.style.display = 'none';
+
   const escolhaDoComputador = getComputerChoice();
   const resultadoDaRodada = playRound(escolhaDoHumano, escolhaDoComputador);
 
   roundExplanation.textContent = resultadoDaRodada;
+
+  roundExplanation.style.backgroundColor = '#edf2f7';
+  roundExplanation.style.padding = '8px 16px';
+  roundExplanation.style.borderRadius = '20px';
+
   scoreBoard.textContent = `Placar: Humano ${humanScore} X ${computerScore} Computador`;
     
   if (humanScore === 3) {
-      finalMessage.textContent = "🏆 Parabéns! Você venceu o jogo!";
-      btnReset.style.display = 'block'; 
-  } else if (computerScore === 3) {
-    finalMessage.textContent = "🤖 Fim de jogo! O computador venceu!";
+    finalMessage.textContent = "🏆 Parabéns! Você venceu o jogo!";
     btnReset.style.display = 'block'; 
+    gameSubtitle.style.display = 'block';
+  } else if (computerScore === 3) {
+      finalMessage.textContent = "🤖 Fim de jogo! O computador venceu!";
+      btnReset.style.display = 'block';
+      gameSubtitle.style.display = 'block';
+
   }
 }
 
@@ -64,6 +75,12 @@ function resetarJogo(){
   finalMessage.textContent = "";
     
   scoreBoard.textContent = "Placar: Humano 0 X 0 Computador";
+
+  roundExplanation.style.backgroundColor = 'transparent';
+  roundExplanation.style.padding = '0';
+  
+  gameSubtitle.style.display = 'block';
+
   btnReset.setAttribute('style', 'display: none;');
 }
 
